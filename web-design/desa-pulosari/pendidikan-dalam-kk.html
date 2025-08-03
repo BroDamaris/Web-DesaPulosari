@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Statistik Pendidikan KK</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/CSS/data.css">
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+  <link rel="stylesheet" href="/CSS/footer-navbar.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+</head>
+<body>
+
+  <!-- header -->
+  <div id="header-placeholder"></div>
+
+  <div class="container my-4">
+    <div class="row g-4">
+      <!-- Content -->
+      <div class="col-lg-9">
+        <div class="card-container">
+
+          <!-- Breadcrumb -->
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-3">
+              <li class="breadcrumb-item"><a href="#">Beranda</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Data Statistik</li>
+            </ol>
+          </nav>
+
+          <!-- Judul -->
+          <h4 class="fw-bold mb-3">Pendidikan Dalam KK</h4>
+
+          <!-- Header Chart -->
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="mb-0">Grafik Pendidikan Dalam KK Penduduk</h6>
+            <div class="btn-group chart-toggle">
+              <!-- Tombol toggle (jika diperlukan) -->
+            </div>
+          </div>
+
+          <!-- Chart -->
+          <div id="chartPendidikanKK" style="height: 400px;"></div>
+
+          <!-- Tabel -->
+          <h6 class="mt-4">Tabel Pendidikan Dalam KK</h6>
+          <div class="table-responsive">
+            <table class="table table-bordered text-center align-middle">
+              <thead class="table-primary">
+                <tr>
+                  <th rowspan="2">No</th>
+                  <th rowspan="2">Kelompok</th>
+                  <th colspan="2">Jumlah</th>
+                  <th colspan="2">Laki-laki</th>
+                  <th colspan="2">Perempuan</th>
+                </tr>
+                <tr>
+                  <th>n</th><th>%</th>
+                  <th>n</th><th>%</th>
+                  <th>n</th><th>%</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>TIDAK / BELUM SEKOLAH</td><td>216</td><td>13,89%</td><td>91</td><td>5,85%</td><td>125</td><td>8,04%</td></tr>
+                <tr><td>2</td><td>BELUM TAMAT SD/SEDERAJAT</td><td>158</td><td>10,16%</td><td>76</td><td>4,89%</td><td>82</td><td>5,27%</td></tr>
+                <tr><td>3</td><td>TAMAT SD / SEDERAJAT</td><td>775</td><td>49,84%</td><td>391</td><td>25,14%</td><td>384</td><td>24,69%</td></tr>
+                <tr><td>4</td><td>SLTP/SEDERAJAT</td><td>186</td><td>11,96%</td><td>97</td><td>6,24%</td><td>89</td><td>5,72%</td></tr>
+                <tr><td>5</td><td>SLTA / SEDERAJAT</td><td>206</td><td>13,25%</td><td>129</td><td>8,30%</td><td>77</td><td>4,95%</td></tr>
+                <tr><td>7</td><td>AKADEMI/ DIPLOMA III/S. MUDA</td><td>2</td><td>0,13%</td><td>0</td><td>0,00%</td><td>2</td><td>0,13%</td></tr>
+                <tr><td>8</td><td>DIPLOMA IV/ STRATA I</td><td>7</td><td>0,45%</td><td>5</td><td>0,32%</td><td>2</td><td>0,13%</td></tr>
+                <tr><td>9</td><td>BELUM MENGISI</td><td>5</td><td>0,32%</td><td>3</td><td>0,19%</td><td>2</td><td>0,13%</td></tr>
+                <tr class="fw-bold bg-light">
+                  <td colspan="2">TOTAL</td>
+                  <td>1555</td><td>100,00%</td>
+                  <td>792</td><td>50,93%</td>
+                  <td>763</td><td>49,07%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div id="footer-placeholder"></div>
+
+  <script src="script.js"></script>
+  <!-- Highcharts Script -->
+  <script>
+    const pieOptions = {
+      chart: { type: 'pie', options3d: { enabled: true, alpha: 45 } },
+      title: { text: '' },
+      credits: { enabled: false },
+      plotOptions: {
+        pie: {
+          depth: 35,
+          dataLabels: { enabled: true, format: '{point.name}: {point.y}' }
+        }
+      }
+    };
+
+    Highcharts.chart('chartPendidikanKK', {
+      ...pieOptions,
+      series: [{
+        name: 'Jumlah',
+        data: [
+          ['Tidak Sekolah', 50],
+          ['SD', 200],
+          ['SMP', 120],
+          ['SMA', 80],
+          ['S1', 20],
+        ]
+      }]
+    });
+  </script>
+
+</body>
+</html>

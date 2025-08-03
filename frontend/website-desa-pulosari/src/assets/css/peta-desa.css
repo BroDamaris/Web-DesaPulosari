@@ -1,0 +1,257 @@
+/* Typography */
+.hero h1,
+h2,
+h3 {
+  font-family: "Poppins", sans-serif;
+}
+
+body,
+p,
+a {
+  font-family: "Open Sans", sans-serif;
+}
+
+.background-wrapper {
+  background-image: url("https://raw.githubusercontent.com/BroDamaris/image-profil-desa/refs/heads/main/background-cover-obud.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.hero {
+  background-image: url("https://raw.githubusercontent.com/BroDamaris/image-profil-desa/refs/heads/main/celurit.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 2rem 1rem;
+}
+
+.hero-text h1,
+.hero-text p {
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+.hero-text {
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  max-width: 90%;
+}
+
+.hero-text h1 {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  line-height: 1.6;
+}
+
+.peta-section {
+  padding: 60px 20px;
+}
+
+.peta-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.peta-text {
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
+  padding: 2rem;
+  background-color: #198754;
+  border-radius: 20px;
+  color: white;
+  text-align: justify;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.peta-text:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.peta-text h2 {
+  color: #ffd966;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.peta-text p {
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+.peta-map {
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
+  text-align: center;
+}
+
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 75%; /* 4:3 aspect ratio */
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.map-container:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.peta-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.btn {
+  background-color: #198754;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  box-shadow: 0 4px 15px rgba(25, 135, 84, 0.3);
+}
+
+.btn:hover {
+  background-color: #ffd966;
+  color: #184f28;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 217, 102, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 40vh;
+    background-attachment: scroll;
+  }
+
+  .peta-section {
+    padding: 40px 15px;
+  }
+
+  .peta-content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .peta-text {
+    min-width: unset;
+    padding: 1.5rem;
+  }
+
+  .peta-map {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .map-container {
+    padding-bottom: 60%; /* Adjust aspect ratio for mobile */
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    min-height: 35vh;
+    padding: 1rem 0.5rem;
+  }
+
+  .peta-section {
+    padding: 30px 10px;
+  }
+
+  .peta-text {
+    padding: 1rem;
+    border-radius: 15px;
+  }
+
+  .peta-text h2 {
+    margin-bottom: 1rem;
+  }
+
+  .btn {
+    padding: 10px 25px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-text {
+    max-width: 95%;
+  }
+
+  .peta-content {
+    gap: 1rem;
+  }
+
+  .map-container {
+    padding-bottom: 56.25%; /* 16:9 aspect ratio for small screens */
+  }
+}
+
+@media (max-width: 320px) {
+  .hero-text h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-text p {
+    font-size: 0.85rem;
+  }
+
+  .peta-text {
+    padding: 0.75rem;
+  }
+}
+
+/* Large screens optimization */
+@media (min-width: 1200px) {
+  .peta-section {
+    padding: 80px 40px;
+  }
+
+  .peta-content {
+    gap: 3rem;
+  }
+
+  .peta-text {
+    padding: 2.5rem;
+  }
+}

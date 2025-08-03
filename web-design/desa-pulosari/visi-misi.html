@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visi Misi Desa Pulosari</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/footer-navbar.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+
+    <style>
+        /* Untuk judul */
+        .hero h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Untuk isi teks */
+        body, p, a {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .background-wrapper{
+            background-image: url('assets/background-cover-obud.svg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero{
+            background-image: url('assets/celurit.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            min-height: 300px;
+        }
+
+        .hero-text h1, .hero-text p{
+            text-shadow: 2px 2px 5px rgba(0,0,0,10);
+        }
+
+        .hero-text{
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            padding: 0 20px;
+        }
+
+        .visi-misi{
+            padding-left: 100px;
+            padding-right: 100px;
+            padding-bottom: 50px;
+            padding-top: 50px;
+        }
+
+        .visi-text h2, .misi-text h2{
+            color: #184f28;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .visi-text, .misi-text{
+            margin-bottom: 40px;
+            color: black;
+        }
+
+        .visi-misi-text{
+            color: black;
+            text-align: justify;
+            padding-left: 100px;
+            padding-right: 100px;
+        }
+
+        .visi-text{
+            padding-left: 100px;
+            padding-right: 100px;
+        }
+
+        .misi-text ol{
+            padding-left: 100px;
+            padding-right: 100px;
+            text-align: justify;
+        }
+
+        .misi-image img{
+            transition: transform 0.5s ease;
+        }
+
+        .misi-image img:hover{
+            transform: scale(1.05);
+        }
+
+        .misi-section {
+            padding: 3rem !important;
+        }
+
+        .misi-accordion {
+            width: 60%;
+        }
+
+        .misi-image img {
+            width: 400px;
+            border-radius: 15px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .visi-misi {
+                padding-left: 60px;
+                padding-right: 60px;
+            }
+            
+            .visi-text {
+                padding-left: 60px;
+                padding-right: 60px;
+            }
+            
+            .misi-text ol {
+                padding-left: 60px;
+                padding-right: 60px;
+            }
+            
+            .misi-image img {
+                width: 350px;
+            }
+            
+            .misi-section {
+                padding: 2rem !important;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero {
+                height: 40vh;
+                background-attachment: scroll;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .visi-misi {
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+            
+            .visi-text {
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+            
+            .misi-text ol {
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+            
+            .misi-section {
+                flex-direction: column !important;
+                text-align: center;
+                padding: 1.5rem !important;
+            }
+            
+            .misi-accordion {
+                width: 100% !important;
+                margin-top: 2rem;
+            }
+            
+            .misi-image {
+                margin-bottom: 1rem;
+            }
+            
+            .misi-image img {
+                width: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 35vh;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .visi-misi {
+                padding: 30px 20px;
+            }
+            
+            .visi-text {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            
+            .visi-text h2 {
+                font-size: 1.75rem;
+                margin-bottom: 30px;
+            }
+            
+            .misi-text ol {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            
+            .misi-section {
+                padding: 1rem !important;
+            }
+            
+            .misi-image img {
+                width: 250px;
+            }
+            
+            .accordion-button {
+                font-size: 0.95rem;
+                padding: 0.75rem 1rem;
+            }
+            
+            .accordion-body {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                height: 30vh;
+                min-height: 250px;
+            }
+            
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+            }
+            
+            .visi-misi {
+                padding: 20px 15px;
+            }
+            
+            .visi-text {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            
+            .visi-text h2 {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+            
+            .visi-text p {
+                font-size: 0.95rem;
+                text-align: left;
+            }
+            
+            .misi-text ol {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            
+            .misi-section {
+                padding: 0.5rem !important;
+            }
+            
+            .misi-image img {
+                width: 200px;
+            }
+            
+            .misi-accordion h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .accordion-button {
+                font-size: 0.9rem;
+                padding: 0.6rem 0.8rem;
+            }
+            
+            .accordion-body {
+                font-size: 0.85rem;
+                padding: 0.8rem;
+            }
+            
+            hr {
+                width: 90% !important;
+                margin: 30px auto !important;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.25rem;
+            }
+            
+            .hero p {
+                font-size: 0.8rem;
+            }
+            
+            .visi-misi {
+                padding: 15px 10px;
+            }
+            
+            .visi-text {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            
+            .visi-text h2 {
+                font-size: 1.25rem;
+            }
+            
+            .visi-text p {
+                font-size: 0.9rem;
+            }
+            
+            .misi-text ol {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            
+            .misi-image img {
+                width: 180px;
+            }
+            
+            .misi-accordion h2 {
+                font-size: 1.25rem;
+            }
+            
+            .accordion-button {
+                font-size: 0.85rem;
+                padding: 0.5rem 0.7rem;
+            }
+            
+            .accordion-body {
+                font-size: 0.8rem;
+                padding: 0.7rem;
+            }
+        }
+
+        /* Landscape orientation adjustments for mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero {
+                height: 60vh;
+            }
+            
+            .misi-image img {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 576px) and (orientation: landscape) {
+            .hero {
+                height: 80vh;
+            }
+            
+            .misi-image img {
+                width: 150px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- header -->
+    <div id="header-placeholder"></div>
+
+    <nav class="hero">
+        <nav class="hero-text">
+            <h1 style="font-weight: bold;">Visi dan Misi Desa Pulosari</h1>
+            <p>Menjadi pedoman dalam mewujudkan pembangunan desa.</p>
+        </nav>
+    </nav>
+
+    <nav class="background-wrapper">
+        <nav class="visi-misi">
+            <nav class="visi-text">
+                <h2 style="font-weight: bold;"><u>Visi Desa Pulosari</u></h2>
+                <p>Terwujudnya masyarakat Desa Pulosari yang Bersih, Relegius, Sejahtera, Rapi dan Indah melalui Akselerasi Pembangunan yang berbasis Keagamaan, Budaya Hukum dan Berwawasan Lingkungan dengan berorentasi pada peningkatan Kinerja Aparatur dan Pemberdayaan Masyarakat.</p>
+            </nav>
+
+            <hr style="border: 1px solid #184f28; width: 80%; margin: 40px auto;">
+
+            <section class="misi-section d-flex align-items-center justify-content-between p-5">
+                <!-- Gambar Kiri -->
+                <div class="misi-image">
+                    <img src="assets/logo-desa2-bgremove-Photoroom.jpg" alt="Gambar Misi Desa" style="width: 400px; border-radius: 15px;">
+                </div>
+
+                <!-- Accordion Kanan -->
+                <div class="accordion misi-accordion" id="accordionMisi" style="width: 60%;">
+                    <h2 class="mb-4 text-center" style="color: #184f28;"><u>Misi Desa Pulosari</u></h2>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="misi1">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                1. Lingkungan Desa Bersih, Rapi, dan Indah
+                            </button>
+                        </h2>
+                        <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="misi1" data-bs-parent="#accordionMisi">
+                            <div class="accordion-body">
+                                Melalui program kebersihan rutin, penghijauan, dan pengelolaan sampah yang terintegrasi.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="misi2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                2. Masyarakat Religius
+                            </button>
+                        </h2>
+                        <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="misi2" data-bs-parent="#accordionMisi">
+                            <div class="accordion-body">
+                                Meningkatkan kegiatan keagamaan dan membina kerukunan antarwarga.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="misi3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                3. Meningkatkan kesejahteraan masyarakat
+                            </button>
+                        </h2>
+                        <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="misi3" data-bs-parent="#accordionMisi">
+                            <div class="accordion-body">
+                                Dengan mendorong pertumbuhan ekonomi desa melalui pemberdayaan UMKM, pertanian, dan potensi lokal.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="misi4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                4. Mendorong budaya hukum yang kuat
+                            </button>
+                        </h2>
+                        <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="misi4" data-bs-parent="#accordionMisi">
+                            <div class="accordion-body">
+                                Dengan meningkatkan kesadaran dan ketaatan masyarakat terhadap peraturan yang berlaku.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="misi5">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                5. Mewujudkan desa yang berwawasan lingkungan
+                            </button>
+                        </h2>
+                        <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="misi5" data-bs-parent="#accordionMisi">
+                            <div class="accordion-body">
+                                Melalui edukasi dan penerapan pola hidup ramah lingkungan di seluruh lapisan masyarakat.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="misi6">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                                6. Meningkatkan kinerja aparatur desa
+                            </button>
+                        </h2>
+                        <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="misi6" data-bs-parent="#accordionMisi">
+                            <div class="accordion-body">
+                                Dengan membangun tata kelola pemerintahan desa yang profesional, transparan, dan akuntabel.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="misi7">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                                7. Memperkuat partisipasi dan pemberdayaan masyarakat
+                            </button>
+                        </h2>
+                        <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="misi7" data-bs-parent="#accordionMisi">
+                            <div class="accordion-body">
+                                Dalam setiap aspek pembangunan desa untuk menciptakan rasa memiliki dan tanggung jawab bersama.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </nav>
+    </nav>
+
+    <!-- footer -->
+    <div id="footer-placeholder"></div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

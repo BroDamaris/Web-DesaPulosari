@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel - Desa Pulosari</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+      body {
+        font-family: "Inter", sans-serif;
+      }
+
+      .font-poppins {
+        font-family: "Poppins", sans-serif;
+      }
+
+      .bg-gradient-green {
+        background: linear-gradient(
+          135deg,
+          #065f46 0%,
+          #047857 25%,
+          #059669 75%,
+          #10b981 100%
+        );
+      }
+
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+
+      .nav-item {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .nav-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .nav-item:hover::before {
+        left: 100%;
+      }
+
+      .nav-btn {
+        position: relative;
+        z-index: 1;
+      }
+
+      .nav-btn.active {
+        background: linear-gradient(135deg, #16a34a, #15803d);
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        border-left: 4px solid #22c55e;
+      }
+
+      .dropdown-item {
+        transform: translateY(-10px);
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .dropdown-open .dropdown-item {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .pulse-animation {
+        animation: pulse-glow 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes pulse-glow {
+        from {
+          box-shadow: 0 0 5px rgba(34, 197, 94, 0.3);
+        }
+        to {
+          box-shadow: 0 0 20px rgba(34, 197, 94, 0.6),
+            0 0 30px rgba(34, 197, 94, 0.4);
+        }
+      }
+
+      .floating-animation {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+
+      .slide-in {
+        animation: slideIn 0.3s ease-out;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(-20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      /* Custom scrollbar */
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 2px;
+      }
+
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.5);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 min-h-screen">
+    <!-- Mobile Overlay -->
+    <div
+      id="sidebarOverlay"
+      class="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden hidden"
+    ></div>
+
+    <!-- Sidebar -->
+    <div
+      id="sidebar"
+      class="fixed left-0 top-0 h-full w-64 bg-gradient-green text-white transform -translate-x-full lg:translate-x-0 transition-all duration-300 ease-in-out z-50 shadow-2xl"
+    >
+      <!-- Header Section -->
+      <div
+        class="glass-effect p-6 border-b border-green-500 border-opacity-30 relative overflow-hidden"
+      >
+        <!-- Background decoration -->
+        <div
+          class="absolute top-0 right-0 w-20 h-20 bg-white bg-opacity-5 rounded-full -mr-10 -mt-10"
+        ></div>
+        <div
+          class="absolute bottom-0 left-0 w-16 h-16 bg-white bg-opacity-5 rounded-full -ml-8 -mb-8"
+        ></div>
+
+        <div class="flex items-center space-x-3 relative z-10">
+          <div class="relative">
+            <div
+              class="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center shadow-lg pulse-animation"
+            >
+              <i class="fas fa-leaf text-white text-xl"></i>
+            </div>
+            <div
+              class="absolute -top-1 -right-1 w-4 h-4 bg-yellow-400 rounded-full flex items-center justify-center"
+            >
+              <i class="fas fa-crown text-yellow-800 text-xs"></i>
+            </div>
+          </div>
+          <div class="slide-in">
+            <h2
+              class="font-poppins font-bold text-lg bg-gradient-to-r from-white to-green-100 bg-clip-text text-transparent"
+            >
+              Admin Panel
+            </h2>
+            <div class="flex items-center space-x-1">
+              <i class="fas fa-map-marker-alt text-green-300 text-xs"></i>
+              <p class="text-green-200 text-sm">Desa Pulosari</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Section -->
+      <nav class="flex-1 overflow-y-auto custom-scrollbar py-4">
+        <ul class="space-y-1 px-3">
+          <!-- Dashboard -->
+          <li class="nav-item slide-in">
+            <button
+              onclick="showSection('dashboard', event)"
+              class="nav-btn w-full flex items-center px-4 py-3 text-left rounded-xl hover:bg-white hover:bg-opacity-10 transition-all duration-300 group active"
+            >
+              <div
+                class="flex items-center justify-center w-10 h-10 bg-white bg-opacity-10 rounded-lg group-hover:bg-opacity-20 transition-all duration-300 mr-3"
+              >
+                <i
+                  class="fas fa-tachometer-alt text-green-300 group-hover:text-white transition-colors duration-300"
+                ></i>
+              </div>
+              <span
+                class="font-medium group-hover:translate-x-1 transition-transform duration-300"
+                >Dashboard</span
+              >
+              <div
+                class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              >
+                <i class="fas fa-chevron-right text-xs"></i>
+              </div>
+            </button>
+          </li>
+
+          <!-- Kelola Berita -->
+          <li class="nav-item slide-in" style="animation-delay: 0.1s">
+            <button
+              onclick="toggleDropdown('beritaDropdown')"
+              class="w-full flex items-center px-4 py-3 text-left rounded-xl hover:bg-white hover:bg-opacity-10 transition-all duration-300 group"
+            >
+              <div
+                class="flex items-center justify-center w-10 h-10 bg-white bg-opacity-10 rounded-lg group-hover:bg-opacity-20 transition-all duration-300 mr-3"
+              >
+                <i
+                  class="fas fa-newspaper text-green-300 group-hover:text-white transition-colors duration-300"
+                ></i>
+              </div>
+              <span
+                class="font-medium group-hover:translate-x-1 transition-transform duration-300"
+                >Kelola Berita</span
+              >
+              <div class="ml-auto">
+                <i
+                  id="beritaDropdownIcon"
+                  class="fas fa-chevron-down text-xs transition-transform duration-300 group-hover:text-green-200"
+                ></i>
+              </div>
+            </button>
+            <ul id="beritaDropdown" class="hidden ml-6 mt-2 space-y-1">
+              <li class="dropdown-item">
+                <button
+                  onclick="showSection('berita-list', event)"
+                  class="w-full flex items-center px-4 py-2 text-left text-sm text-green-200 hover:text-white hover:bg-white hover:bg-opacity-5 rounded-lg transition-all duration-200 group"
+                >
+                  <div class="w-6 h-6 flex items-center justify-center mr-3">
+                    <i
+                      class="fas fa-list text-xs group-hover:scale-110 transition-transform duration-200"
+                    ></i>
+                  </div>
+                  Daftar Berita
+                </button>
+              </li>
+              <li class="dropdown-item" style="animation-delay: 0.1s">
+                <button
+                  onclick="showSection('tambah-berita', event)"
+                  class="w-full flex items-center px-4 py-2 text-left text-sm text-green-200 hover:text-white hover:bg-white hover:bg-opacity-5 rounded-lg transition-all duration-200 group"
+                >
+                  <div class="w-6 h-6 flex items-center justify-center mr-3">
+                    <i
+                      class="fas fa-plus text-xs group-hover:scale-110 transition-transform duration-200"
+                    ></i>
+                  </div>
+                  Tambah Berita
+                </button>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Kelola Galeri -->
+          <li class="nav-item slide-in" style="animation-delay: 0.2s">
+            <button
+              onclick="toggleDropdown('galeriDropdown')"
+              class="w-full flex items-center px-4 py-3 text-left rounded-xl hover:bg-white hover:bg-opacity-10 transition-all duration-300 group"
+            >
+              <div
+                class="flex items-center justify-center w-10 h-10 bg-white bg-opacity-10 rounded-lg group-hover:bg-opacity-20 transition-all duration-300 mr-3"
+              >
+                <i
+                  class="fas fa-images text-green-300 group-hover:text-white transition-colors duration-300"
+                ></i>
+              </div>
+              <span
+                class="font-medium group-hover:translate-x-1 transition-transform duration-300"
+                >Kelola Galeri</span
+              >
+              <div class="ml-auto">
+                <i
+                  id="galeriDropdownIcon"
+                  class="fas fa-chevron-down text-xs transition-transform duration-300 group-hover:text-green-200"
+                ></i>
+              </div>
+            </button>
+            <ul id="galeriDropdown" class="hidden ml-6 mt-2 space-y-1">
+              <li class="dropdown-item">
+                <button
+                  onclick="showSection('galeri-foto', event)"
+                  class="w-full flex items-center px-4 py-2 text-left text-sm text-green-200 hover:text-white hover:bg-white hover:bg-opacity-5 rounded-lg transition-all duration-200 group"
+                >
+                  <div class="w-6 h-6 flex items-center justify-center mr-3">
+                    <i
+                      class="fas fa-photo-video text-xs group-hover:scale-110 transition-transform duration-200"
+                    ></i>
+                  </div>
+                  Galeri Foto
+                </button>
+              </li>
+              <li class="dropdown-item" style="animation-delay: 0.1s">
+                <button
+                  onclick="showSection('tambah-foto', event)"
+                  class="w-full flex items-center px-4 py-2 text-left text-sm text-green-200 hover:text-white hover:bg-white hover:bg-opacity-5 rounded-lg transition-all duration-200 group"
+                >
+                  <div class="w-6 h-6 flex items-center justify-center mr-3">
+                    <i
+                      class="fas fa-upload text-xs group-hover:scale-110 transition-transform duration-200"
+                    ></i>
+                  </div>
+                  Tambah Foto
+                </button>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Profil Desa -->
+          <li class="nav-item slide-in" style="animation-delay: 0.3s">
+            <button
+              onclick="toggleDropdown('profilDropdown')"
+              class="w-full flex items-center px-4 py-3 text-left rounded-xl hover:bg-white hover:bg-opacity-10 transition-all duration-300 group"
+            >
+              <div
+                class="flex items-center justify-center w-10 h-10 bg-white bg-opacity-10 rounded-lg group-hover:bg-opacity-20 transition-all duration-300 mr-3"
+              >
+                <i
+                  class="fas fa-info-circle text-green-300 group-hover:text-white transition-colors duration-300"
+                ></i>
+              </div>
+              <span
+                class="font-medium group-hover:translate-x-1 transition-transform duration-300"
+                >Profil Desa</span
+              >
+              <div class="ml-auto">
+                <i
+                  id="profilDropdownIcon"
+                  class="fas fa-chevron-down text-xs transition-transform duration-300 group-hover:text-green-200"
+                ></i>
+              </div>
+            </button>
+            <ul id="profilDropdown" class="hidden ml-6 mt-2 space-y-1">
+              <li class="dropdown-item">
+                <button
+                  onclick="showSection('sejarah', event)"
+                  class="w-full flex items-center px-4 py-2 text-left text-sm text-green-200 hover:text-white hover:bg-white hover:bg-opacity-5 rounded-lg transition-all duration-200 group"
+                >
+                  <div class="w-6 h-6 flex items-center justify-center mr-3">
+                    <i
+                      class="fas fa-history text-xs group-hover:scale-110 transition-transform duration-200"
+                    ></i>
+                  </div>
+                  Sejarah Desa
+                </button>
+              </li>
+              <li class="dropdown-item" style="animation-delay: 0.1s">
+                <button
+                  onclick="showSection('statistik', event)"
+                  class="w-full flex items-center px-4 py-2 text-left text-sm text-green-200 hover:text-white hover:bg-white hover:bg-opacity-5 rounded-lg transition-all duration-200 group"
+                >
+                  <div class="w-6 h-6 flex items-center justify-center mr-3">
+                    <i
+                      class="fas fa-chart-bar text-xs group-hover:scale-110 transition-transform duration-200"
+                    ></i>
+                  </div>
+                  Statistik
+                </button>
+              </li>
+              <li class="dropdown-item" style="animation-delay: 0.2s">
+                <button
+                  onclick="showSection('kependudukan', event)"
+                  class="w-full flex items-center px-4 py-2 text-left text-sm text-green-200 hover:text-white hover:bg-white hover:bg-opacity-5 rounded-lg transition-all duration-200 group"
+                >
+                  <div class="w-6 h-6 flex items-center justify-center mr-3">
+                    <i
+                      class="fas fa-users text-xs group-hover:scale-110 transition-transform duration-200"
+                    ></i>
+                  </div>
+                  Kependudukan
+                </button>
+              </li>
+              <li class="dropdown-item" style="animation-delay: 0.3s">
+                <button
+                  onclick="showSection('pemerintahan', event)"
+                  class="w-full flex items-center px-4 py-2 text-left text-sm text-green-200 hover:text-white hover:bg-white hover:bg-opacity-5 rounded-lg transition-all duration-200 group"
+                >
+                  <div class="w-6 h-6 flex items-center justify-center mr-3">
+                    <i
+                      class="fas fa-building text-xs group-hover:scale-110 transition-transform duration-200"
+                    ></i>
+                  </div>
+                  Pemerintahan Desa
+                </button>
+              </li>
+              <li class="dropdown-item" style="animation-delay: 0.4s">
+                <button
+                  onclick="showSection('potensi', event)"
+                  class="w-full flex items-center px-4 py-2 text-left text-sm text-green-200 hover:text-white hover:bg-white hover:bg-opacity-5 rounded-lg transition-all duration-200 group"
+                >
+                  <div class="w-6 h-6 flex items-center justify-center mr-3">
+                    <i
+                      class="fas fa-seedling text-xs group-hover:scale-110 transition-transform duration-200"
+                    ></i>
+                  </div>
+                  Potensi Desa
+                </button>
+              </li>
+              <li class="dropdown-item" style="animation-delay: 0.5s">
+                <button
+                  onclick="showSection('umkm', event)"
+                  class="w-full flex items-center px-4 py-2 text-left text-sm text-green-200 hover:text-white hover:bg-white hover:bg-opacity-5 rounded-lg transition-all duration-200 group"
+                >
+                  <div class="w-6 h-6 flex items-center justify-center mr-3">
+                    <i
+                      class="fas fa-store text-xs group-hover:scale-110 transition-transform duration-200"
+                    ></i>
+                  </div>
+                  UMKM Desa
+                </button>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Pengguna -->
+          <li class="nav-item slide-in" style="animation-delay: 0.4s">
+            <button
+              onclick="showSection('users', event)"
+              class="nav-btn w-full flex items-center px-4 py-3 text-left rounded-xl hover:bg-white hover:bg-opacity-10 transition-all duration-300 group"
+            >
+              <div
+                class="flex items-center justify-center w-10 h-10 bg-white bg-opacity-10 rounded-lg group-hover:bg-opacity-20 transition-all duration-300 mr-3"
+              >
+                <i
+                  class="fas fa-users text-green-300 group-hover:text-white transition-colors duration-300"
+                ></i>
+              </div>
+              <span
+                class="font-medium group-hover:translate-x-1 transition-transform duration-300"
+                >Pengguna</span
+              >
+              <div
+                class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              >
+                <i class="fas fa-chevron-right text-xs"></i>
+              </div>
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Footer Section -->
+      <div class="p-4 border-t border-green-500 border-opacity-30">
+        <div class="glass-effect rounded-xl p-3 mb-3">
+          <div class="flex items-center space-x-3">
+            <div
+              class="w-10 h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center floating-animation"
+            >
+              <i class="fas fa-user-shield text-white text-sm"></i>
+            </div>
+            <div>
+              <p class="text-sm font-medium text-white">Admin Desa</p>
+              <p class="text-xs text-green-200">Online</p>
+            </div>
+          </div>
+        </div>
+
+        <button
+          onclick="logout()"
+          class="w-full flex items-center px-4 py-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 rounded-xl transition-all duration-300 group transform hover:scale-105 shadow-lg"
+        >
+          <div
+            class="flex items-center justify-center w-8 h-8 bg-white bg-opacity-20 rounded-lg mr-3 group-hover:bg-opacity-30 transition-all duration-300"
+          >
+            <i
+              class="fas fa-sign-out-alt text-white text-sm group-hover:scale-110 transition-transform duration-300"
+            ></i>
+          </div>
+          <span class="font-medium text-white">Keluar</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Toggle Button -->
+    <button
+      id="mobileToggle"
+      class="fixed top-4 left-4 z-50 lg:hidden bg-green-600 text-white p-3 rounded-xl shadow-lg hover:bg-green-700 transition-colors duration-300"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Main Content Area (Demo) -->
+    <div class="lg:ml-64 min-h-screen bg-gray-50">
+      <div class="p-8">
+        <div class="bg-white rounded-2xl shadow-lg p-6">
+          <h1 class="text-2xl font-bold text-gray-800 mb-4">
+            Selamat Datang di Admin Panel
+          </h1>
+          <p class="text-gray-600">
+            Pilih menu di sidebar untuk mulai mengelola website desa.
+          </p>
+
+          <!-- Content sections will be displayed here -->
+          <div id="contentArea" class="mt-8">
+            <!-- Konten muncul disini -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Mobile sidebar toggle
+      const sidebar = document.getElementById("sidebar");
+      const sidebarOverlay = document.getElementById("sidebarOverlay");
+      const mobileToggle = document.getElementById("mobileToggle");
+
+      mobileToggle.addEventListener("click", () => {
+        sidebar.classList.toggle("-translate-x-full");
+        sidebarOverlay.classList.toggle("hidden");
+      });
+
+      sidebarOverlay.addEventListener("click", () => {
+        sidebar.classList.add("-translate-x-full");
+        sidebarOverlay.classList.add("hidden");
+      });
+
+      // Dropdown functionality
+      function toggleDropdown(dropdownId) {
+        const dropdown = document.getElementById(dropdownId);
+        const icon = document.getElementById(dropdownId + "Icon");
+        const isHidden = dropdown.classList.contains("hidden");
+
+        // Close all other dropdowns
+        document.querySelectorAll('[id$="Dropdown"]').forEach((dd) => {
+          if (dd.id !== dropdownId) {
+            dd.classList.add("hidden");
+            dd.classList.remove("dropdown-open");
+            const ddIcon = document.getElementById(dd.id + "Icon");
+            if (ddIcon) {
+              ddIcon.classList.remove("rotate-180");
+            }
+          }
+        });
+
+        if (isHidden) {
+          dropdown.classList.remove("hidden");
+          setTimeout(() => {
+            dropdown.classList.add("dropdown-open");
+          }, 10);
+          icon.classList.add("rotate-180");
+        } else {
+          dropdown.classList.remove("dropdown-open");
+          icon.classList.remove("rotate-180");
+          setTimeout(() => {
+            dropdown.classList.add("hidden");
+          }, 300);
+        }
+      }
+
+      // Section navigation
+      function showSection(sectionId, event) {
+        // Tambah highlight active ke sidebar
+        document
+          .querySelectorAll(".nav-btn")
+          .forEach((btn) => btn.classList.remove("active"));
+        if (event) event.currentTarget.classList.add("active");
+
+        const contentArea = document.getElementById("contentArea");
+        contentArea.innerHTML =
+          '<div class="text-gray-600 p-4">Memuat...</div>';
+
+        fetch(`pages/${sectionId}.html`)
+          .then((response) => {
+            if (!response.ok)
+              throw new Error(`Halaman ${sectionId}.html tidak ditemukan`);
+            return response.text();
+          })
+          .then((html) => {
+            contentArea.innerHTML = html;
+          })
+          .catch((err) => {
+            contentArea.innerHTML = `<div class="text-red-600 p-4">Gagal memuat konten: ${err.message}</div>`;
+          });
+
+        // Tutup sidebar mobile
+        if (window.innerWidth < 1024) {
+          sidebar.classList.add("-translate-x-full");
+          sidebarOverlay.classList.add("hidden");
+        }
+      }
+
+      function getSectionTitle(sectionId) {
+        const titles = {
+          dashboard: "Dashboard",
+          "berita-list": "Daftar Berita",
+          "tambah-berita": "Tambah Berita",
+          "galeri-foto": "Galeri Foto",
+          "tambah-foto": "Tambah Foto",
+          sejarah: "Sejarah Desa",
+          statistik: "Statistik Desa",
+          kependudukan: "Data Kependudukan",
+          pemerintahan: "Pemerintahan Desa",
+          potensi: "Potensi Desa",
+          umkm: "UMKM Desa",
+          users: "Manajemen Pengguna",
+        };
+        return titles[sectionId] || sectionId;
+      }
+
+      // Logout function
+      function logout() {
+        if (confirm("Apakah Anda yakin ingin keluar dari sistem?")) {
+          alert("Anda telah logout dari sistem admin desa.");
+          // In real application, redirect to login page
+          // window.location.href = 'login.html';
+        }
+      }
+
+      // Initialize page
+      document.addEventListener("DOMContentLoaded", function () {
+        showSection("dashboard");
+      });
+
+      // Handle window resize
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 1024) {
+          sidebar.classList.remove("-translate-x-full");
+          sidebarOverlay.classList.add("hidden");
+        }
+      });
+
+      const userData = [
+        {
+          id: 1,
+          name: "Admin Desa",
+          email: "admin@desa.id",
+          role: "Administrator",
+        },
+        { id: 2, name: "Petugas Data", email: "data@desa.id", role: "Editor" },
+        {
+          id: 3,
+          name: "Operator UMKM",
+          email: "umkm@desa.id",
+          role: "Operator",
+        },
+      ];
+
+      function loadUserTable() {
+        const tbody = document.getElementById("user-table-body");
+        tbody.innerHTML = ""; // Kosongkan isi sebelumnya
+
+        userData.forEach((user) => {
+          const row = document.createElement("tr");
+          row.className = "border-b border-gray-200 hover:bg-gray-50";
+          row.innerHTML = `
+                <td class="px-4 py-2">${user.name}</td>
+                <td class="px-4 py-2">${user.email}</td>
+                <td class="px-4 py-2">${user.role}</td>
+                <td class="px-4 py-2">
+                    <button class="text-blue-600 hover:underline mr-2" onclick="editUser(${user.id})">Edit</button>
+                    <button class="text-red-600 hover:underline" onclick="deleteUser(${user.id})">Hapus</button>
+                </td>
+                `;
+          tbody.appendChild(row);
+        });
+      }
+
+      function editUser(id) {
+        const user = userData.find((u) => u.id === id);
+        alert(`Edit pengguna: ${user.name}`);
+      }
+
+      function deleteUser(id) {
+        if (confirm("Yakin ingin menghapus pengguna ini?")) {
+          const index = userData.findIndex((u) => u.id === id);
+          if (index !== -1) {
+            userData.splice(index, 1);
+            loadUserTable(); // refresh tabel
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

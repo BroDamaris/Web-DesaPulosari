@@ -1,0 +1,96 @@
+<div class="space-y-6">
+    <div class="space-y-6">
+        <h2 class="text-2xl font-bold text-gray-800">Kelola UMKM Desa</h2>
+
+        <!-- Form Input UMKM -->
+        <form class="space-y-4 bg-white shadow-xl rounded-xl p-6 border border-gray-200" onsubmit="event.preventDefault(); addUMKM();">
+            <!-- Nama -->
+            <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+                <i class="fas fa-store mr-2 text-green-600"></i>Nama UMKM
+            </label>
+            <input id="umkm-nama" type="text" placeholder="Contoh: Keripik Mangga"
+                    class="block w-full rounded-lg border-gray-300 shadow-sm focus:ring-green-500 focus:border-green-500 px-4 py-2">
+            </div>
+
+            <!-- Bidang -->
+            <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+                <i class="fas fa-briefcase mr-2 text-green-600"></i>Bidang Usaha
+            </label>
+            <input id="umkm-bidang" type="text" placeholder="Contoh: Kuliner, Fashion, Kerajinan"
+                    class="block w-full rounded-lg border-gray-300 shadow-sm focus:ring-green-500 focus:border-green-500 px-4 py-2">
+            </div>
+
+            <!-- Deskripsi -->
+            <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+                <i class="fas fa-align-left mr-2 text-green-600"></i>Deskripsi
+            </label>
+            <textarea id="umkm-deskripsi" rows="3" placeholder="Jelaskan singkat tentang UMKM..."
+                        class="block w-full rounded-lg border-gray-300 shadow-sm focus:ring-green-500 focus:border-green-500 px-4 py-2"></textarea>
+            </div>
+
+            <!-- Upload Gambar -->
+            <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+                <i class="fas fa-image mr-2 text-green-600"></i>Upload Gambar UMKM
+            </label>
+            <input id="umkm-gambar" type="file" accept="image/*"
+                    class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-green-100 file:text-green-700 hover:file:bg-green-200" onchange="previewGambar(event)">
+            <img id="preview" class="mt-3 w-32 h-32 object-cover rounded shadow hidden border">
+            </div>
+
+            <!-- Tombol Simpan -->
+            <button type="submit"
+                    class="w-full md:w-auto bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg shadow-md font-semibold transition-all duration-300">
+            <i class="fas fa-save mr-2"></i>Simpan UMKM
+            </button>
+        </form>
+
+        <!-- Daftar UMKM -->
+        <div class="mt-6">
+            <h3 class="text-lg font-semibold text-gray-700 mb-2">Daftar UMKM Terdaftar</h3>
+            <ul id="umkm-list" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3"></ul>
+        </div>
+    </div>
+
+    <script>
+        function previewGambar(event) {
+            const img = document.getElementById('preview');
+            const file = event.target.files[0];
+            if (file) {
+            img.src = URL.createObjectURL(file);
+            img.classList.remove('hidden');
+            }
+        }
+
+        function addUMKM() {
+            const nama = document.getElementById('umkm-nama').value;
+            const bidang = document.getElementById('umkm-bidang').value;
+            const deskripsi = document.getElementById('umkm-deskripsi').value;
+            const gambar = document.getElementById('umkm-gambar').files[0];
+
+            const list = document.getElementById('umkm-list');
+
+            const card = document.createElement('li');
+            card.className = "bg-white rounded-lg shadow border p-4";
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+            card.innerHTML = `
+                <img src="${e.target.result}" alt="${nama}" class="w-full h-40 object-cover rounded mb-3">
+                <h4 class="text-lg font-semibold text-gray-800">${nama}</h4>
+                <p class="text-sm text-gray-500 mb-1">${bidang}</p>
+                <p class="text-sm text-gray-600">${deskripsi}</p>
+            `;
+            list.appendChild(card);
+            };
+            if (gambar) reader.readAsDataURL(gambar);
+
+            // Reset form
+            document.querySelector('form').reset();
+            document.getElementById('preview').classList.add('hidden');
+        }
+    </script>
+</div>

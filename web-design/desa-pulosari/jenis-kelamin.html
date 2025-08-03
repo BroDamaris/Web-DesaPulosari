@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Statistik Pendidikan KK</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/CSS/data.css">
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+  <link rel="stylesheet" href="/CSS/footer-navbar.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container my-4">
+  <div class="row g-4">
+    <!-- Content -->
+    <div class="col-lg-9">
+      <div class="card-container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-3">
+            <li class="breadcrumb-item"><a href="#">Beranda</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Data Statistik</li>
+          </ol>
+        </nav>
+
+        <h4 class="fw-bold mb-3">Data Penduduk Menurut Pendidikan Dalam KK</h4>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h6 class="mb-0">Grafik Pendidikan Dalam KK</h6>
+          <div class="btn-group chart-toggle">
+          </div>
+        </div>
+
+        <div id="chartJenisKelamin" style="height: 400px;"></div>
+        <h6 class="">Tabel Jenis Kelamin</h6>
+<div class="table-responsive">
+  <table class="table table-bordered text-center align-middle">
+    <thead class="table-primary">
+      <tr>
+        <th rowspan="2">No</th>
+        <th rowspan="2">Kelompok</th>
+        <th colspan="2">Jumlah</th>
+        <th colspan="2">Laki-laki</th>
+        <th colspan="2">Perempuan</th>
+      </tr>
+      <tr>
+        <th>n</th>
+        <th>%</th>
+        <th>n</th>
+        <th>%</th>
+        <th>n</th>
+        <th>%</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>LAKI-LAKI</td>
+        <td>792</td>
+        <td>50,93%</td>
+        <td>792</td>
+        <td>50,93%</td>
+        <td>0</td>
+        <td>0,00%</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>PEREMPUAN</td>
+        <td>763</td>
+        <td>49,07%</td>
+        <td>0</td>
+        <td>0,00%</td>
+        <td>763</td>
+        <td>49,07%</td>
+      </tr>
+      <tr class="bg-light">
+        <td>3</td>
+        <td>BELUM MENGISI</td>
+        <td>0</td>
+        <td>0,00%</td>
+        <td>0</td>
+        <td>0,00%</td>
+        <td>0</td>
+        <td>0,00%</td>
+      </tr>
+      <tr class="fw-bold bg-light">
+        <td colspan="2">TOTAL</td>
+        <td>1555</td>
+        <td>100,00%</td>
+        <td>792</td>
+        <td>50,93%</td>
+        <td>763</td>
+        <td>49,07%</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div id="footer-placeholder"></div>
+
+  <script src="script.js"></script>
+<script>
+  Highcharts.chart('chartJenisKelamin', {
+    chart: { type: 'pie' },
+    title: { text: '' },
+    credits: { enabled: false },
+    plotOptions: {
+      pie: {
+        innerSize: '60%',
+        dataLabels: { enabled: true, format: '{point.name}: {point.y}' }
+      }
+    },
+    series: [{
+      name: 'Jumlah',
+      data: [
+        { name: 'Laki-laki', y: 320 },
+        { name: 'Perempuan', y: 330 }
+      ]
+    }]
+  });
+</script>
+
+</body>
+</html>

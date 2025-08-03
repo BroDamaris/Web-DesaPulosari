@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Potensi Desa Pulosari</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/CSS/footer-navbar.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <style>
+        body, p, a {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .hero {
+            background-image: url('assets/celurit.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            padding: 2rem 1rem;
+        }
+
+        .hero-text {
+            max-width: 90%;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+        }
+
+        .hero-text p {
+            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+            line-height: 1.6;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+        }
+
+        .background-wrapper {
+            background-image: url('assets/background-cover-obud.svg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 60px 20px;
+            min-height: 100vh;
+        }
+
+        .potensi-desa {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease-in-out;
+            backdrop-filter: blur(10px);
+        }
+
+        .potensi-desa:hover {
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+        }
+
+        .potensi-desa h2 {
+            color: #184f28;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+        }
+
+        .potensi-desa h4 {
+            color: #184f28;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+        }
+
+        .potensi-desa p {
+            text-align: justify;
+            margin-bottom: 16px;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            line-height: 1.7;
+        }
+
+        .potensi-desa img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .potensi-desa img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        .potensi-desa hr {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #184f28, transparent);
+            width: 80%;
+            margin: 40px auto;
+        }
+
+        .section-content {
+            margin-bottom: 40px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .footer-note {
+            background-color: rgba(248, 249, 250, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: center;
+            border-left: 4px solid #184f28;
+        }
+
+        .footer-note a {
+            color: #184f28;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer-note a:hover {
+            color: #0d5d1a;
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 40vh;
+                background-attachment: scroll;
+            }
+
+            .background-wrapper {
+                padding: 40px 15px;
+            }
+
+            .potensi-desa {
+                padding: 30px 25px;
+                border-radius: 20px;
+            }
+
+            .potensi-desa h2 {
+                margin-bottom: 30px;
+            }
+
+            .potensi-desa h4 {
+                margin-top: 25px;
+                margin-bottom: 15px;
+            }
+
+            .potensi-desa hr {
+                margin: 30px auto;
+                width: 90%;
+            }
+
+            .section-content {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                min-height: 35vh;
+                padding: 1rem 0.5rem;
+            }
+
+            .background-wrapper {
+                padding: 30px 10px;
+            }
+
+            .potensi-desa {
+                padding: 20px 15px;
+                border-radius: 15px;
+            }
+
+            .potensi-desa h2 {
+                margin-bottom: 25px;
+            }
+
+            .potensi-desa h4 {
+                margin-top: 20px;
+                margin-bottom: 12px;
+            }
+
+            .potensi-desa p {
+                margin-bottom: 12px;
+            }
+
+            .potensi-desa img {
+                margin-bottom: 15px;
+                max-height: 250px;
+            }
+
+            .potensi-desa hr {
+                margin: 25px auto;
+                width: 95%;
+            }
+
+            .footer-note {
+                padding: 15px;
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text {
+                max-width: 95%;
+            }
+
+            .potensi-desa {
+                padding: 15px 10px;
+            }
+
+            .potensi-desa img {
+                max-height: 200px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .hero-text h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-text p {
+                font-size: 0.85rem;
+            }
+
+            .potensi-desa {
+                padding: 12px 8px;
+            }
+
+            .footer-note {
+                padding: 12px;
+            }
+        }
+
+        /* Large screens optimization */
+        @media (min-width: 1200px) {
+            .background-wrapper {
+                padding: 80px 40px;
+            }
+
+            .potensi-desa {
+                padding: 60px;
+            }
+
+            .potensi-desa img {
+                max-height: 500px;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .hero {
+                background-attachment: scroll;
+                -webkit-print-color-adjust: exact;
+            }
+
+            .potensi-desa {
+                box-shadow: none;
+                background-color: white;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- header -->
+    <div id="header-placeholder"></div>
+    
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-text">
+            <h1 style="font-weight: bold;">Potensi Desa Pulosari</h1>
+            <p>Desa Pulosari memiliki berbagai potensi unggulan di bidang pertanian, peternakan, dan wisata alam.</p>
+        </div>
+    </div>
+
+    <!-- Potensi Desa -->
+    <div class="background-wrapper">
+        <div class="potensi-desa">
+            <h2><u>Potensi Desa</u></h2>
+
+            <div class="section-content">
+                <h4>Pengertian Potensi Desa</h4>
+                <p>Potensi desa adalah segala sumber daya alam dan sumber daya manusia yang dimiliki oleh Desa Pulosari, Kecamatan Telagasari, Kabupaten Karawang. Potensi ini menjadi modal utama dalam pembangunan desa, baik dalam sektor ekonomi, lingkungan, maupun sosial budaya.</p>
+                <p>Desa Pulosari memiliki kekayaan alam dan karakter masyarakat yang kuat, sehingga mampu mendukung pertumbuhan desa yang mandiri dan berkelanjutan.</p>
+            </div>
+
+            <hr>
+
+            <div class="section-content">
+                <h4>Potensi Pertanian</h4>
+                <div class="image-container">
+                    <img src="assets/pertanian.jpg" alt="Pertanian Desa Pulosari" class="img-fluid" />
+                </div>
+                <p>Pertanian merupakan sektor penggerak utama perekonomian masyarakat Desa Pulosari. Dengan lahan sawah yang luas dan tanah yang subur, mayoritas penduduk menggantungkan hidup dari usaha pertanian—khususnya budidaya padi sebagai komoditas utama.</p>
+                <p>Sistem pertanian di Pulosari masih mempertahankan nilai-nilai tradisional, seperti gotong royong dalam panen dan pengairan sawah melalui saluran irigasi teknis maupun setengah teknis. Selain padi, sebagian masyarakat juga menanam palawija sebagai tanaman sela.</p>
+            </div>
+
+            <hr>
+
+            <div class="section-content">
+                <h4>Potensi Peternakan</h4>
+                <div class="image-container">
+                    <img src="assets/peternakan.jpg" alt="Peternakan Desa Pulosari" class="img-fluid" />
+                </div>
+                <p>Selain pertanian, masyarakat Desa Pulosari juga mengembangkan sektor peternakan skala rumah tangga. Beberapa jenis ternak yang umum dipelihara adalah sapi, kambing, ayam kampung, dan bebek.</p>
+                <p>Meskipun masih dikelola secara konvensional, peternakan di desa ini memberikan kontribusi terhadap pendapatan keluarga serta menjadi bagian dari kearifan lokal dalam pemanfaatan limbah pertanian sebagai pakan ternak.</p>
+            </div>
+
+            <hr>
+
+            <div class="section-content">
+                <h4>Potensi Wisata Alam</h4>
+                <div class="image-container">
+                    <img src="assets/wisata-alam.jpg" alt="Wisata Alam Desa Pulosari" class="img-fluid" />
+                </div>
+                <p>Keindahan alam Desa Pulosari menyimpan potensi wisata yang menjanjikan, terutama dalam bentuk wisata pedesaan dan agrowisata. Hamparan sawah yang hijau, lanskap desa yang tenang, serta suasana yang masih alami menjadi daya tarik tersendiri bagi pengunjung yang ingin merasakan ketenangan khas perdesaan Karawang.</p>
+                <p>Potensi ini dapat dikembangkan menjadi program wisata edukasi pertanian atau paket kunjungan berbasis budaya dan alam.</p>
+            </div>
+
+            <div class="footer-note">
+                <p class="text-muted mb-0"><em>Catatan: Potensi UMKM dan produk lokal dapat dilihat pada halaman <strong><a href="produk-desa.html">Produk Desa</a></strong>.</em></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div id="footer-placeholder"></div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

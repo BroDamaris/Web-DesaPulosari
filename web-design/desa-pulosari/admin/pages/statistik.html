@@ -1,0 +1,61 @@
+<div class="bg-white p-6 rounded-xl shadow-md">
+    <h2 class="text-xl font-semibold mb-4 text-green-700">Input Data Statistik Desa</h2>
+    <form id="form-statistik" class="space-y-4">
+
+        <!-- Pendidikan Dalam KK -->
+        <div>
+        <label class="block font-medium text-gray-700 mb-1">Pendidikan Dalam KK</label>
+        <textarea rows="3" class="w-full border rounded-md p-2" placeholder="Contoh: Tidak Sekolah: 50, SD: 120, SMP: 100, SMA: 80, D3/S1: 60"></textarea>
+        </div>
+
+        <!-- Pendidikan Sedang Ditempuh -->
+        <div>
+        <label class="block font-medium text-gray-700 mb-1">Pendidikan Sedang Ditempuh</label>
+        <textarea rows="3" class="w-full border rounded-md p-2" placeholder="Contoh: SD: 100, SMP: 90, SMA: 85, Kuliah: 30"></textarea>
+        </div>
+
+        <!-- Pekerjaan -->
+        <div>
+        <label class="block font-medium text-gray-700 mb-1">Pekerjaan</label>
+        <textarea rows="3" class="w-full border rounded-md p-2" placeholder="Contoh: Petani: 150, Pegawai Negeri: 30, Wiraswasta: 80"></textarea>
+        </div>
+
+        <!-- Rentang Umur -->
+        <div>
+        <label class="block font-medium text-gray-700 mb-1">Rentang Umur</label>
+        <textarea rows="3" class="w-full border rounded-md p-2" placeholder="Contoh: 0-5 Tahun: 30, 6-18 Tahun: 90, 19-40 Tahun: 150, 41-60 Tahun: 70, >60 Tahun: 20"></textarea>
+        </div>
+
+        <!-- Populasi Wilayah -->
+        <div>
+        <label class="block font-medium text-gray-700 mb-1">Populasi Wilayah</label>
+        <textarea rows="3" class="w-full border rounded-md p-2" placeholder="Contoh: Dusun A: 300, Dusun B: 280, Dusun C: 120"></textarea>
+        </div>
+
+        <!-- Agama -->
+        <div>
+        <label class="block font-medium text-gray-700 mb-1">Agama</label>
+        <textarea rows="3" class="w-full border rounded-md p-2" placeholder="Contoh: Islam: 670, Kristen: 30, Hindu: 5"></textarea>
+        </div>
+
+        <!-- Jenis Kelamin -->
+        <div>
+        <label class="block font-medium text-gray-700 mb-1">Jenis Kelamin</label>
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+            <label class="block text-sm text-gray-600 mb-1">Laki-laki</label>
+            <input type="number" class="w-full border rounded-md p-2" placeholder="Jumlah laki-laki">
+            </div>
+            <div>
+            <label class="block text-sm text-gray-600 mb-1">Perempuan</label>
+            <input type="number" class="w-full border rounded-md p-2" placeholder="Jumlah perempuan">
+            </div>
+        </div>
+        </div>
+
+        <!-- Tombol Simpan -->
+        <div class="pt-4">
+        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md shadow">Simpan</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,32 @@
+<!-- Tambah Berita Section -->
+<div id="tambah-berita" class="section active">
+    <h2 class="text-2xl font-bold text-gray-700 mb-4">Tambah Berita</h2>
+    <form id="addBeritaForm" class="bg-white p-6 rounded-xl shadow">
+        <div class="mb-4">
+            <label for="judul" class="block text-sm font-medium text-gray-700">Judul Berita</label>
+            <input type="text" id="judul" name="judul" class="mt-1 block w-full p-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" required>
+        </div>
+        <div class="mb-4">
+            <label for="konten" class="block text-sm font-medium text-gray-700">Konten Berita</label>
+            <textarea id="konten" name="konten" rows="6" class="mt-1 block w-full p-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" required></textarea>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div>
+                <label for="tanggal" class="block text-sm font-medium text-gray-700">Tanggal</label>
+                <input type="date" id="tanggal" name="tanggal" class="mt-1 block w-full p-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" required>
+            </div>
+            <div>
+                <label for="kategori" class="block text-sm font-medium text-gray-700">Kategori</label>
+                <select id="kategori" name="kategori" class="mt-1 block w-full p-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                    <option value="umum">Umum</option>
+                    <option value="pembangunan">Pembangunan</option>
+                    <option value="sosial">Sosial</option>
+                    <option value="ekonomi">Ekonomi</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition-colors duration-300">
+            <i class="fas fa-plus mr-2"></i>Tambah Berita
+        </button>
+    </form>
+</div>

@@ -1,0 +1,115 @@
+<div class="space-y-6">
+    <h2 class="text-2xl font-bold text-gray-800">Struktur Pemerintahan Desa</h2>
+
+    <!-- Form Kepala & Sekretaris Desa -->
+    <form id="pemerintahanForm" class="space-y-4 bg-white p-6 rounded-xl shadow-lg border">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Nama Kepala Desa</label>
+            <input id="kepalaDesa" type="text" placeholder="Contoh: Budi Santoso"
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-green-500 focus:border-green-500 px-4 py-2">
+        </div>
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Kontak Kepala Desa</label>
+            <input id="kontakKepalaDesa" type="tel" placeholder="Contoh: 08123456789"
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-green-500 focus:border-green-500 px-4 py-2">
+        </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Nama Sekretaris Desa</label>
+            <input id="sekretarisDesa" type="text" placeholder="Contoh: Siti Aminah"
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-green-500 focus:border-green-500 px-4 py-2">
+        </div>
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Kontak Sekretaris Desa</label>
+            <input id="kontakSekretarisDesa" type="tel" placeholder="Contoh: 082233445566"
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-green-500 focus:border-green-500 px-4 py-2">
+        </div>
+        </div>
+
+        <div>
+        <label class="block text-sm font-medium text-gray-700">Jumlah RT</label>
+        <input id="jumlahRT" type="number"
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-green-500 focus:border-green-500 px-4 py-2">
+        </div>
+
+        <button type="button" onclick="simpanData()"
+        class="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 font-semibold transition-all duration-300">
+        Simpan
+        </button>
+    </form>
+
+    <!-- Form Tambah/Edit Perangkat Lain -->
+    <div class="bg-white p-6 rounded-xl shadow-lg border space-y-4">
+        <h3 class="text-xl font-semibold text-gray-800">Perangkat Desa Lainnya</h3>
+
+        <form id="perangkatForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="text" id="namaPerangkat" placeholder="Nama Jabatan (contoh: Kasi Pemerintahan)"
+            class="rounded-md border-gray-300 shadow-sm focus:ring-green-500 focus:border-green-500 px-4 py-2">
+        <input type="tel" id="kontakPerangkat" placeholder="Kontak (contoh: 081234567890)"
+            class="rounded-md border-gray-300 shadow-sm focus:ring-green-500 focus:border-green-500 px-4 py-2">
+        <button type="button" onclick="tambahPerangkat()"
+            class="col-span-1 md:col-span-2 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 font-semibold transition-all duration-300">
+            Tambah/Update Perangkat
+        </button>
+        </form>
+
+        <ul id="listPerangkat" class="space-y-3">
+        <!-- Data dummy -->
+        <li class="flex justify-between items-center bg-gray-100 rounded p-3">
+            <div>
+            <p class="font-medium">Ketua BPD</p>
+            <p class="text-sm text-gray-600">08124567890</p>
+            </div>
+            <button onclick="hapusPerangkat(this)"
+            class="text-red-600 hover:text-red-800 font-semibold">Hapus</button>
+        </li>
+        </ul>
+    </div>
+    </div>
+
+    <script>
+    function simpanData() {
+        const kepala = document.getElementById("kepalaDesa").value;
+        const kontakKepala = document.getElementById("kontakKepalaDesa").value;
+        const sekretaris = document.getElementById("sekretarisDesa").value;
+        const kontakSekretaris = document.getElementById("kontakSekretarisDesa").value;
+        const rt = document.getElementById("jumlahRT").value;
+
+        alert(`Data disimpan!\n\nKepala: ${kepala}\nKontak: ${kontakKepala}\nSekretaris: ${sekretaris}\nKontak: ${kontakSekretaris}\nJumlah RT: ${rt}`);
+    }
+
+    function tambahPerangkat() {
+        const nama = document.getElementById("namaPerangkat").value;
+        const kontak = document.getElementById("kontakPerangkat").value;
+
+        if (!nama || !kontak) {
+        alert("Nama dan kontak wajib diisi.");
+        return;
+        }
+
+        const list = document.getElementById("listPerangkat");
+        const item = document.createElement("li");
+        item.className = "flex justify-between items-center bg-gray-100 rounded p-3";
+
+        item.innerHTML = `
+        <div>
+            <p class="font-medium">${nama}</p>
+            <p class="text-sm text-gray-600">${kontak}</p>
+        </div>
+        <button onclick="hapusPerangkat(this)" class="text-red-600 hover:text-red-800 font-semibold">Hapus</button>
+        `;
+
+        list.appendChild(item);
+
+        // Reset input
+        document.getElementById("namaPerangkat").value = "";
+        document.getElementById("kontakPerangkat").value = "";
+    }
+
+    function hapusPerangkat(button) {
+        button.parentElement.remove();
+    }
+</script>

@@ -1,0 +1,116 @@
+/* data */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  .chart-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    min-height: 410px;
+  }
+  .chart-title {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+  .chart-container {
+    height: 330px;
+  }
+  .detail-link {
+    font-size: 0.75rem;
+    color: #007bff;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    opacity: 0.7;
+  }
+  .detail-link:hover {
+    text-decoration: underline;
+    opacity: 1;
+  }
+  .background-wrapper {
+    background-image: url(/Image/11.png);
+  }
+  .warna-atas {
+    background-color: #198754;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+
+/* layout-data */
+body {
+    background-color: #f1f5f9;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .sidebar-content {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+
+  .sidebar-content h5 {
+    font-weight: bold;
+    color: #184f28;
+  }
+
+  .sidebar-content .nav-link {
+    color: #333;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: 0.3s;
+  }
+
+  .sidebar-content .nav-link:hover,
+  .sidebar-content .nav-link.active {
+    background-color: #198754;
+    color: white !important;
+  }
+
+  .card-container {
+    background-color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .breadcrumb {
+    background-color: transparent;
+    font-size: 14px;
+  }
+
+  .table th, .table td {
+    font-size: 14px;
+    vertical-align: middle;
+  }
+
+  .offcanvas-toggle {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 1055;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #198754;
+    color: white;
+    font-size: 24px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    border: none;
+  }
+
+  .background-wrapper {
+    background-image: url(/Image/11.png);
+    background-size: cover;
+  }
